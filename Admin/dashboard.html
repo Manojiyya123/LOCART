@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LOCART Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Sidebar (Desktop) -->
+<div class="sidebar d-none d-md-block">
+  <h5><span class="logo">L0c<span class="accent">ArT</span></span> .admin</h5>
+  <a href="dashboard.html" class="active">📊 Dashboard</a>
+  <a href="shop-requests.html">🛒 Shop Requests</a>
+  <a href="customers.html">👤 Customers</a>
+  <a href="shops.html">🏬 Shops</a>
+  <a href="reports.html">⚠️ Reports</a>
+</div>
+
+<!-- Mobile Navbar -->
+<nav class="navbar navbar-dark d-md-none w-100">
+  <div class="container-fluid" style="background-color:#212121;">
+    <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+      ☰ Menu
+    </button>
+    <span class="navbar-brand ms-2">
+      <span class="logo">L0c<span class="accent">ArT</span></span> .admin
+    </span>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="main-content">
+  <div class="topbar d-flex justify-content-between align-items-center mb-4">
+    <h4>Welcome, Admin!</h4>
+    <button class="btn btn-outline-primary btn-sm">Logout</button>
+  </div>
+
+  <!-- Alert -->
+  <div class="alert alert-info alert-dismissible fade show" role="alert">
+    🔔 You have <b>3 new shop requests</b> pending approval!
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+
+  <!-- Stats Cards -->
+  <!-- Stats Cards -->
+<div class="row mb-4">
+  <div class="col-12 col-sm-6 col-md-3 mb-3">
+    <div class="card p-3 text-center shadow-sm">
+      <i class="bi bi-shop fs-1 text-primary"></i>
+      <h5>Total Shops</h5>
+      <h2>120</h2>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3 mb-3">
+    <div class="card p-3 text-center shadow-sm">
+      <i class="bi bi-people fs-1 text-success"></i>
+      <h5>Total Customers</h5>
+      <h2>540</h2>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3 mb-3">
+    <div class="card p-3 text-center shadow-sm">
+      <i class="bi bi-hourglass-split fs-1 text-warning"></i>
+      <h5>Pending Requests</h5>
+      <h2>15</h2>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-3 mb-3">
+    <div class="card p-3 text-center shadow-sm">
+      <i class="bi bi-flag fs-1 text-danger"></i>
+      <h5>Total Reports</h5>
+      <h2>30</h2>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Chart and Recent Activity side by side -->
+ <div class="row mb-4">
+  <!-- Chart Column -->
+  <div class="col-12 col-md-6 mb-3" style="max-width:550px;">
+    <div class="card p-3">
+      <h5>Statistics Chart</h5>
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Recent Activity Column -->
+  <div class="col-12 col-md-6 mb-3">
+    <div class="card p-3">
+      <h5>Recent Activity</h5>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">New shop request from <b>Fresh Mart</b></li>
+        <li class="list-group-item">Customer <b>John</b> account disabled</li>
+        <li class="list-group-item">Report received against <b>Shop #23</b></li>
+        <li class="list-group-item">Post deleted from <b>SuperVeggies</b></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<!-- Mobile Offcanvas Sidebar -->
+<div class="offcanvas offcanvas-start" id="mobileSidebar">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title"><span class="logo">L0c<span class="accent">ArT</span></span> .admin</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body sidebar-links">
+    <a href="dashboard.html" class="active">📊 Dashboard</a>
+    <a href="shop-requests.html">🛒 Shop Requests</a>
+    <a href="customers.html">👤 Customers</a>
+    <a href="shops.html">🏬 Shops</a>
+    <a href="reports.html">⚠️ Reports</a>
+  </div>
+</div>
+
+<!-- Chart JS -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const ctx = document.getElementById('myChart');
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Shops', 'Customers', 'Requests', 'Reports'],
+    datasets: [{
+      data: [120, 540, 15, 30],
+      backgroundColor: ['#007bff','#28a745','#ffc107','#dc3545']
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false }
+    }
+  }
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

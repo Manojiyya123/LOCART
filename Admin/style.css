@@ -1,0 +1,193 @@
+
+    body {
+      background-color: #F5F5F5;
+      font-family: Arial, sans-serif;
+    }
+    .sidebar {
+      position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 16.666%; /* same as col-md-2 (2/12) */
+  padding: 20px;
+  background-color: #212121;
+  color: white;
+  overflow-y: auto; 
+    }
+    .sidebar h2 {
+      color: #1976D2;
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+    .sidebar a {
+      color: #ccc;
+      display: block;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: #1976D2;
+      color: white;
+    }
+    .main-content {
+  margin-left: 16.666%; /* same width as sidebar */
+  padding: 20px;
+}
+    .topbar {
+      background: white;
+      padding: 10px 20px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    }
+    .card h5 {
+      color: #1976D2;
+      font-weight: bold;
+    }
+    .mb4 h3{
+      color: #1976D2;
+      font-weight: bold;
+    }
+    .btn-outline-primary:hover {
+  background-color: #1976D2;
+  border-color: #1976D2;
+  color: #fff;
+}
+
+    /* Offcanvas sidebar (mobile) matching desktop style */
+#mobileSidebar {
+  background-color: #212121;
+  color: white;
+}
+
+#mobileSidebar .offcanvas-header h5 {
+  color: #1976D2;
+}
+
+#mobileSidebar .sidebar-links a {
+  color: #ccc;
+  display: block;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#mobileSidebar .sidebar-links a:hover,
+#mobileSidebar .sidebar-links a.active {
+  background-color: #1976D2;
+  color: white;
+}
+/* General Body */
+body {
+  background-color: #F5F5F5;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Desktop Sidebar */
+.sidebar {
+  height: 100vh;
+  background: #212121;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: #1976D2;
+  font-size: 22px;
+  margin-bottom: 30px;
+}
+
+.sidebar a {
+  color: #ccc;
+  display: block;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background: #1976D2;
+  color: white;
+}
+
+/* Mobile Offcanvas Sidebar */
+#mobileSidebar {
+  background-color: #212121;
+  color: white;
+}
+
+#mobileSidebar .offcanvas-header h5  {
+  color: #1976D2;
+  max-height: 80vh;       /* Optional: prevent too tall */
+  width: 183px;           /* Set a narrower width if desired */
+}
+
+#mobileSidebar .sidebar-links a {
+  color: #ccc;
+  display: block;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+#mobileSidebar .sidebar-links a:hover,
+#mobileSidebar .sidebar-links a.active {
+  background-color: #1976D2;
+  color: white;
+}
+
+/* Optional: Table Card */
+.table {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+.table th {
+  font-weight: bold;
+}
+/* Force mobile offcanvas title color */
+#mobileSidebar .offcanvas-title {
+  color: #1976D2 !important;
+}
+
+/* Optional: make the close button visible on dark background */
+#mobileSidebar .btn-close {
+  filter: invert(1); /* turns white if background is dark */
+}
+#mobileSidebar .offcanvas-body {
+  height: auto;           /* Height based on content */
+  overflow-y: visible;    /* No unnecessary scrolling */
+}
+/* Logo styling */
+.logo {
+  font-family: 'Poppins', sans-serif; /* Modern, bold font */
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: 1px;
+  color: #1976D2; /* Base blue */
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+}
+
+.logo .accent {
+  color: #FF6F00; /* Highlight part of the word */
+}
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+}

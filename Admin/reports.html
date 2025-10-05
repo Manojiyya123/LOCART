@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reports - LOCART Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- Mobile Navbar -->
+    <nav class="navbar navbar-dark d-md-none w-100" style="background-color:#212121;">
+      <div class="container-fluid">
+        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+          ☰ Menu
+        </button>
+        <span class="navbar-brand ms-2">
+          <span class="logo">L0c<span class="accent">ArT</span></span> .admin
+        </span>
+      </div>
+    </nav>
+
+    <!-- Sidebar (Desktop) -->
+    <div class="col-md-2 sidebar d-none d-md-block position-fixed h-100">
+      <h5 class="offcanvas-title"><span class="logo">L0c<span class="accent">ArT</span></span> .admin</h5>
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="shop-requests.html">🛒 Shop Requests</a>
+      <a href="customers.html">👤 Customers</a>
+      <a href="shops.html">🏬 Shops</a>
+      <a href="reports.html" class="active">⚠️ Reports</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-10 offset-md-2 p-3">
+
+      <!-- Topbar -->
+      <div class="topbar d-flex justify-content-between align-items-center mb-4">
+        <h4>Reports Management</h4>
+      </div>
+
+      <!-- Cards -->
+      
+
+      <!-- Table -->
+      <div class="table-responsive">
+        <table class="table table-striped table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>#</th>
+              <th>Report Type</th>
+              <th>Reported Profile</th>
+              <th>Reason</th>
+              <th>Reported By</th>
+              <th>Reported On</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Shop</td>
+              <td>Arun Textiles</td>
+              <td>Fake discounts</td>
+              <td>Ravi Kumar</td>
+              <td>2025-10-01</td>
+              <td>
+                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#reportDetails1">View</button>
+                <button class="btn btn-warning btn-sm">Ignore</button>
+                <button class="btn btn-success btn-sm">Reply</button>
+                <button class="btn btn-danger btn-sm">Suspend</button>
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Customer</td>
+              <td>Sneha Reddy</td>
+              <td>Abusive messages</td>
+              <td>Meena Bakery</td>
+              <td>2025-09-29</td>
+              <td>
+                <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#reportDetails2">View</button>
+                <button class="btn btn-warning btn-sm">Ignore</button>
+                <button class="btn btn-success btn-sm">Reply</button>
+                <button class="btn btn-danger btn-sm">Suspend</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modals -->
+<div class="modal fade" id="reportDetails1" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Report Details - Arun Textiles</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Reported Profile:</strong> Arun Textiles (Shop)</p>
+        <p><strong>Reported By:</strong> Ravi Kumar</p>
+        <p><strong>Reason:</strong> Fake discount schemes</p>
+        <p><strong>Time:</strong> 2025-10-01</p>
+        <hr>
+        <p>Admin Actions:</p>
+        <button class="btn btn-warning btn-sm">Ignore</button>
+        <button class="btn btn-success btn-sm">Reply to Reporter</button>
+        <button class="btn btn-danger btn-sm">Delete Post</button>
+        <button class="btn btn-dark btn-sm">Suspend Account</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="reportDetails2" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Report Details - Sneha Reddy</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Reported Profile:</strong> Sneha Reddy (Customer)</p>
+        <p><strong>Reported By:</strong> Meena Bakery</p>
+        <p><strong>Reason:</strong> Abusive messages in chat</p>
+        <p><strong>Time:</strong> 2025-09-29</p>
+        <hr>
+        <p>Admin Actions:</p>
+        <button class="btn btn-warning btn-sm">Ignore</button>
+        <button class="btn btn-success btn-sm">Reply to Reporter</button>
+        <button class="btn btn-dark btn-sm">Suspend Account</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Sidebar -->
+<div class="offcanvas offcanvas-start" id="mobileSidebar">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title"><span class="logo">L0c<span class="accent">ArT</span></span> .admin</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body sidebar-links">
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="shop-requests.html">🛒 Shop Requests</a>
+    <a href="customers.html">👤 Customers</a>
+    <a href="shops.html">🏬 Shops</a>
+    <a href="reports.html" class="active">⚠️ Reports</a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Owner Requests - LOCART Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+
+    <!-- Mobile Navbar -->
+    <nav class="navbar navbar-dark d-md-none w-100" style="background-color:#212121;">
+      <div class="container-fluid">
+        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileSidebar">
+          ☰ Menu
+        </button>
+        <span class="navbar-brand ms-2">
+          <span class="logo">L0c<span class="accent">ArT</span></span> .admin
+        </span>
+      </div>
+    </nav>
+
+    <!-- Sidebar (Desktop) -->
+    <div class="col-md-2 sidebar d-none d-md-block position-fixed h-100">
+      <h5 class="offcanvas-title"><span class="logo">L0c<span class="accent">ArT</span></span> .admin</h5>
+      <a href="dashboard.html">📊 Dashboard</a>
+      <a href="shop-requests.html" class="active">🛒 Shop Requests</a>
+      <a href="customers.html">👤 Customers</a>
+      <a href="shops.html">🏬 Shops</a>
+      <a href="reports.html">⚠️ Reports</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="col-md-10 offset-md-2 p-3">
+
+      <!-- Topbar -->
+      <div class="topbar d-flex justify-content-between align-items-center mb-4">
+        <h4>Shop Requests</h4>
+      </div>
+
+      <!-- Shop Requests Table -->
+      <div class="content">
+        <h3 class="mb-4">Pending Shop Owner Requests</h3>
+        <div class="table-responsive">
+          <table class="table table-hover bg-white shadow-sm rounded">
+           <thead class="table-dark">
+              <tr>
+                <th>ID</th>
+                <th>Owner Name</th>
+                <th>Email</th>
+                <th>Shop Name</th>
+                <th>Location</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Ravi Kumar</td>
+                <td>ravi@example.com</td>
+                <td>Fresh Mart</td>
+                <td>Chennai</td>
+                <td>
+                  <button class="btn btn-success btn-sm">Approve</button>
+                  <button class="btn btn-danger btn-sm">Reject</button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Anita Sharma</td>
+                <td>anita@example.com</td>
+                <td>Style Hub</td>
+                <td>Delhi</td>
+                <td>
+                  <button class="btn btn-success btn-sm">Approve</button>
+                  <button class="btn btn-danger btn-sm">Reject</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Offcanvas Sidebar (Mobile) -->
+<div class="offcanvas offcanvas-start" id="mobileSidebar">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title"><span class="logo">L0c<span class="accent">ArT</span></span> .admin</h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body sidebar-links">
+    <a href="dashboard.html">📊 Dashboard</a>
+    <a href="shop-requests.html" class="active">🛒 Shop Requests</a>
+    <a href="customers.html">👤 Customers</a>
+    <a href="shops.html">🏬 Shops</a>
+    <a href="reports.html">⚠️ Reports</a>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
