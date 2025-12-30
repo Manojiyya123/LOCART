@@ -1,0 +1,18 @@
+shop table:
+	shopid(primary),name,ownerid,type,contact no1,contact no2,verification-id(if null means not verified),address,city,pincode,status(active/disable),password,etc about shop
+Owner table: 
+	ownerid,name,father name,aadhar,city,pincode,mobile nmber,email,voter id,age,gender,education status,
+verification table:
+	verify id,type(manual/govt),proof,verified officer id
+report table:
+	report id,content,date,type(customer/shop),reporter id,recever id(who got a report),action id(what action taken by admin)
+action table(has the all type of action taken by admin):
+	actionid,action name,date,reson,person id 
+post table:
+	postid,type(video/image),date,shop id,content,file,
+comment table:
+	comment id,post id,customerid,content
+customer table:
+	customer id,firstname,lastname,mobile,email,city,pincode,password
+customer-care table:
+	msgid,sender id(customer/shop),issue type,msg
