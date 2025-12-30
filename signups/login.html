@@ -1,0 +1,233 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LocArt - Shop Owner Registration</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root { --primary-color: #2563eb; --secondary-color: #ff6b35; }
+  body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); min-height:100vh; padding:20px 0;}
+  .logo { font-size:28px; font-weight:bold; color:white; text-align:center; margin-bottom:30px;}
+  .logo span { color: var(--secondary-color); }
+  .main-container { max-width: 700px; margin:0 auto; }
+  .card { border:none; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.2); overflow:hidden;}
+  .card-header { background: linear-gradient(135deg,var(--primary-color),#1e40af); color:white; padding:25px; border:none;}
+  .card-header h3 { margin:0; font-size:24px;}
+  .card-header p { margin:5px 0 0 0; opacity:0.9; font-size:14px;}
+  .card-body { padding:35px; }
+  .step-indicator { display:flex; justify-content:space-between; margin-bottom:40px; position:relative; }
+  .step-indicator::before { content:''; position:absolute; top:20px; left:0; right:0; height:2px; background:#e2e8f0; z-index:0; }
+  .step { text-align:center; flex:1; position:relative; z-index:1; }
+  .step-circle { width:40px; height:40px; border-radius:50%; background:#e2e8f0; color:#94a3b8; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; font-weight:bold; transition:all 0.3s;}
+  .step.active .step-circle { background: var(--primary-color); color:white; box-shadow:0 0 0 4px rgba(37,99,235,0.2);}
+  .step.completed .step-circle { background:#10b981; color:white; }
+  .step-label { font-size:12px; color:#64748b; font-weight:500; }
+  .step.active .step-label { color: var(--primary-color); font-weight:600; }
+  .form-label { font-weight:600; color:#334155; margin-bottom:8px; }
+  .form-control, .form-select { border:2px solid #e2e8f0; border-radius:10px; padding:12px 15px; transition:all 0.3s; }
+  .form-control:focus, .form-select:focus { border-color: var(--primary-color); box-shadow:0 0 0 4px rgba(37,99,235,0.1); }
+  .btn-primary { background: var(--primary-color); border:none; border-radius:10px; padding:12px 30px; font-weight:600; transition: all 0.3s; }
+  .btn-primary:hover { background:#1e40af; transform:translateY(-2px); box-shadow:0 5px 15px rgba(37,99,235,0.3);}
+  .btn-secondary { background:#64748b; border:none; border-radius:10px; padding:12px 30px; font-weight:600; }
+  .btn-secondary:hover { background:#475569; }
+  .page { display:none; }
+  .page.active { display:block; animation:fadeIn 0.5s; }
+  @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+  .file-upload-wrapper { position:relative; overflow:hidden; display:inline-block; width:100%; }
+  .file-upload-wrapper input[type=file] { position:absolute; left:-9999px; }
+  .file-upload-label { display:block; padding:12px 15px; background:#f1f5f9; border:2px dashed #cbd5e1; border-radius:10px; cursor:pointer; text-align:center; transition: all 0.3s;}
+  .file-upload-label:hover { background:#e2e8f0; border-color: var(--primary-color); }
+  .file-upload-label i { display:block; font-size:32px; color: var(--primary-color); margin-bottom:10px; }
+</style>
+</head>
+<body>
+<div class="main-container">
+  <div class="logo">LOC<span>ART</span></div>
+  <div class="card">
+    <div class="card-header">
+      <h3 id="pageTitle">Shop Owner Registration</h3>
+      <p id="pageDescription">Create your shop profile and start selling</p>
+    </div>
+    <div class="card-body">
+      <div class="step-indicator">
+        <div class="step active" id="step1">
+          <div class="step-circle">1</div>
+          <div class="step-label">Owner Info</div>
+        </div>
+        <div class="step" id="step2">
+          <div class="step-circle">2</div>
+          <div class="step-label">Shop Details</div>
+        </div>
+      </div>
+
+      <!-- Page 1 -->
+      <div class="page active" id="page1">
+        <form id="ownerForm">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-control" id="ownerName" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Email *</label>
+              <input type="email" class="form-control" id="ownerEmail" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Phone *</label>
+              <input type="tel" class="form-control" id="ownerPhone" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Gov ID Type *</label>
+              <select class="form-select" id="govIdType" required>
+                <option value="">Select ID</option>
+                <option value="aadhaar">Aadhaar</option>
+                <option value="pan">PAN</option>
+                <option value="passport">Passport</option>
+                <option value="driving">Driving License</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Gov ID Number *</label>
+            <input type="text" class="form-control" id="govIdNumber" required>
+          </div>
+          <div class="mb-4">
+            <label class="form-label">Upload Gov ID *</label>
+            <div class="file-upload-wrapper">
+              <input type="file" id="govIdFile" accept="image/*,.pdf" required>
+              <label for="govIdFile" class="file-upload-label">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <span>Click to upload ID document</span>
+              </label>
+            </div>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Next: Shop Details</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Page 2 -->
+      <div class="page" id="page2">
+        <form id="shopForm">
+          <div class="mb-3">
+            <label class="form-label">Shop Name *</label>
+            <input type="text" class="form-control" id="shopName" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Shop Category *</label>
+            <select class="form-select" id="shopCategory" required>
+              <option value="">Select Category</option>
+              <option value="grocery">Grocery</option>
+              <option value="fashion">Fashion</option>
+              <option value="electronics">Electronics</option>
+              <option value="home">Home</option>
+              <option value="beauty">Beauty</option>
+              <option value="books">Books</option>
+              <option value="sports">Sports</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Shop Address *</label>
+            <textarea class="form-control" id="shopAddress" rows="3" required></textarea>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Shop Phone *</label>
+              <input type="tel" class="form-control" id="shopPhone" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Registration No *</label>
+              <input type="text" class="form-control" id="shopRegNo" required>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="form-label">Shop Proof Document *</label>
+            <div class="file-upload-wrapper">
+              <input type="file" id="shopProofFile" accept="image/*,.pdf" required>
+              <label for="shopProofFile" class="file-upload-label">
+                <i class="fas fa-store"></i>
+                <span>Upload shop proof</span>
+              </label>
+            </div>
+          </div>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-secondary" onclick="goToPage(1)">Back</button>
+            <button type="submit" class="btn btn-primary flex-grow-1">Complete Registration</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+let ownerData = {};
+function goToPage(num){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('page'+num).classList.add('active');
+  document.getElementById('step'+num).classList.add('active');
+  if(num>1) document.getElementById('step1').classList.add('completed');
+  
+  // Prefill data on back
+  if(num===1 && ownerData.name){
+    document.getElementById('ownerName').value = ownerData.name;
+    document.getElementById('ownerEmail').value = ownerData.email;
+    document.getElementById('ownerPhone').value = ownerData.phone;
+    document.getElementById('govIdType').value = ownerData.govIdType;
+    document.getElementById('govIdNumber').value = ownerData.govIdNumber;
+  }
+}
+
+// Show uploaded file name
+document.getElementById('govIdFile').addEventListener('change', e=>{
+  const label = e.target.nextElementSibling;
+  label.querySelector('span').textContent = e.target.files[0]?.name || "Click to upload ID document";
+});
+document.getElementById('shopProofFile').addEventListener('change', e=>{
+  const label = e.target.nextElementSibling;
+  label.querySelector('span').textContent = e.target.files[0]?.name || "Upload shop proof";
+});
+
+document.getElementById('ownerForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  ownerData = {
+    name: document.getElementById('ownerName').value,
+    email: document.getElementById('ownerEmail').value,
+    phone: document.getElementById('ownerPhone').value,
+    govIdType: document.getElementById('govIdType').value,
+    govIdNumber: document.getElementById('govIdNumber').value,
+    govIdFile: document.getElementById('govIdFile').files[0]
+  };
+  goToPage(2);
+});
+
+document.getElementById('shopForm').addEventListener('submit', e=>{
+  e.preventDefault();
+  const shopData = {
+    ownerName: ownerData.name,
+    ownerEmail: ownerData.email,
+    ownerPhone: ownerData.phone,
+    govIdType: ownerData.govIdType,
+    govIdNumber: ownerData.govIdNumber,
+    shopName: document.getElementById('shopName').value,
+    shopCategory: document.getElementById('shopCategory').value,
+    shopAddress: document.getElementById('shopAddress').value,
+    shopPhone: document.getElementById('shopPhone').value,
+    shopRegNo: document.getElementById('shopRegNo').value,
+    shopId: Date.now()  // unique shop ID
+  };
+
+  localStorage.setItem('shopData', JSON.stringify(shopData));
+  alert('✅ Shop Registered Successfully!');
+  window.location.href = "Product.html";
+});
+</script>
+</body>
+</html>
